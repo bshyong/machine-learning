@@ -26,6 +26,10 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %
 
+sizex = size(X, 2);
+
+% should fix this to be dynamic so that it can handle any size of array X!
+
 mu = [mean(X(:, 1)), mean(X(:, 2))];
 sigma = [std(X(:, 1)), std(X(:, 2))];
 stddevs = [1/std(X(:, 1)),0;0, 1/std(X(:, 2))];
