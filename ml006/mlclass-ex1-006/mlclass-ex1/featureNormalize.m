@@ -26,14 +26,14 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %
 
-sizex = size(X, 2);
+num_columns = size(X, 2);
+for index = [1:num_columns];
+  mu(index) = mean(X(:, index));
+  sigma(index) = std(X(:, index));
+end
 
-% should fix this to be dynamic so that it can handle any size of array X!
-
-mu = [mean(X(:, 1)), mean(X(:, 2))];
-sigma = [std(X(:, 1)), std(X(:, 2))];
-stddevs = [1/std(X(:, 1)),0;0, 1/std(X(:, 2))];
-means = [ones(size(X, 1),1), zeros(size(X, 1),1)] * [mean(X(:, 1)),mean(X(:, 2));0,0];
+stddevs = sigma.^-1 .* eye(size(X, 2));
+means = [ones(size(X, 1),1), zeros(size(X, 1),1)] * [mu;zeros(1,size(X,2))];
 X_norm = (X - means) * stddevs;
 
 % ============================================================
