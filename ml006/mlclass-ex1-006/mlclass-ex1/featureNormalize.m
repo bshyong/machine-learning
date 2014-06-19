@@ -26,8 +26,10 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %
 
+mu = [mean(X(:, 1)), mean(X(:, 2))];
+sigma = [std(X(:, 1)), std(X(:, 2))];
 stddevs = [1/std(X(:, 1)),0;0, 1/std(X(:, 2))];
-means = [ones(size(X, 1),1), zeros(size(X, 1),1)] * [mean(X(:, 1)),0;0,mean(X(:, 2))];
+means = [ones(size(X, 1),1), zeros(size(X, 1),1)] * [mean(X(:, 1)),mean(X(:, 2));0,0];
 X_norm = (X - means) * stddevs;
 
 % ============================================================
