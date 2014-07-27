@@ -12,10 +12,11 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
+positive = find(y==1);
+negative = find(y==0);
 
-scatter(X(:,1), X(:,2));
-
-
+plot(X(positive, :), 'b+');
+plot(X(negative, :), 'ro');
 
 
 
